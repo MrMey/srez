@@ -100,7 +100,7 @@ def setup_tensorflow():
     random.seed(FLAGS.random_seed)
     np.random.seed(FLAGS.random_seed)
 
-    summary_writer = tf.train.SummaryWriter(FLAGS.train_dir, sess.graph)
+    summary_writer = None #tf.train.SummaryWriter(FLAGS.train_dir, sess.graph)
 
     return sess, summary_writer
 
@@ -180,7 +180,8 @@ def _train():
 
 def main(argv=None):
     # Training or showing off?
-
+    import imageio
+    imageio.plugins.ffmpeg.download()
     if FLAGS.run == 'demo':
         _demo()
     elif FLAGS.run == 'train':
